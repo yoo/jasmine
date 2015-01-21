@@ -40,14 +40,5 @@ func AfterEach(fn func()) {
 }
 
 func Expect(value interface{}) *Expectation {
-
-	switch v := value.(type) {
-	case *Spy:
-		value = v.o
-	}
 	return &Expectation{o: js.Global.Call("expect", value)}
-}
-
-func SpyOn(value interface{}, name string) {
-	js.Global.Call("spyOn", value, name)
 }

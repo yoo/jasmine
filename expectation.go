@@ -58,22 +58,3 @@ func (e *Expectation) ToBeGreaterThan(value interface{}) {
 func (e *Expectation) ToBeCloseTo(value interface{}, percision int) {
 	e.o.Call("toBeCloseTo", value, percision)
 }
-
-func (e *Expectation) ToThrow() {
-	e.o.Call("toThrow")
-}
-
-func (e *Expectation) ToThrowError(value interface{}) {
-	e.o.Call("toThrowError", value)
-}
-func (e *Expectation) ToHaveBeenCalled() {
-	e.o.Call("toHaveBeenCalled")
-}
-
-func (e *Expectation) ToHaveBeenCalledWith(values ...interface{}) {
-	e.o.Call("toHaveBeenCalledWith", values...)
-}
-
-func (e *Expectation) TallThrough() {
-	e.o.Call("callThrough")
-}

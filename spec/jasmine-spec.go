@@ -2,6 +2,9 @@ package main
 
 import . "github.com/JohannWeging/jasmine"
 
+func caller(f func()) {
+	f()
+}
 func main() {
 
 	Describe("testig basic jasmine functions", func() {
@@ -83,5 +86,25 @@ func main() {
 			Expect(a).ToBe(1)
 		})
 
+	})
+
+	Describe("testing spy like functinallity with ItAsync", func() {
+		var ch chan bool
+
+		BeforeEach(func() {
+			ch = make(chan bool)
+		})
+		ItAsync("test toHaveBeenCalled", func(done func()) {
+			caller(func() {
+				go func() {
+					ch <- true
+				}()
+			})
+			go func() {
+				b := <-ch
+				Expect(b).ToBeTruthy()
+				done()
+			}()
+		})
 	})
 }

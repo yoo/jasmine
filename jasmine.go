@@ -23,6 +23,14 @@ func XIt(behavior string, fn func()) {
 	js.Global.Call("xit", behavior, fn)
 }
 
+func ItAsync(behavior string, fn func(func())) {
+	js.Global.Call("it", behavior, fn)
+}
+
+func XitAsync(behavior string, fn func(func())) {
+	js.Global.Call("xit", behavior, fn)
+}
+
 func BeforeEach(fn func()) {
 	js.Global.Call("beforeEach", fn)
 }

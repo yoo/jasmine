@@ -3,10 +3,12 @@ language: go
 go:
     - tip
 
+sudo: false
+
 before_install:
     - mkdir -p gobin
     - export GOBIN=$PWD/gobin
-    
+
 install:
     - go get -u github.com/gopherjs/gopherjs
     - nvm install 0.10.35
@@ -17,4 +19,4 @@ before_script:
     - cd $TRAVIS_BUILD_DIR/spec && $GOBIN/gopherjs build jasmine-spec.go
 
 script:
-    - cd $TRAVIS_BUILD_DIR && jasmine 
+    - cd $TRAVIS_BUILD_DIR && jasmine

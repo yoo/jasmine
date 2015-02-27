@@ -3,7 +3,7 @@ package jasmine
 import "github.com/gopherjs/gopherjs/js"
 
 type Expectation struct {
-	o   js.Object
+	o   *js.Object
 	Not *Expectation `js:"not"`
 }
 

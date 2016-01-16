@@ -1,6 +1,6 @@
 package main
 
-import "github.com/JohannWeging/jasmine"
+import "github.com/arvitaly/gopherjs-jasmine"
 
 func caller(f func()) {
 	f()

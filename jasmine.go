@@ -44,12 +44,19 @@ func BeforeEachAsync(fn func(func())) {
 	js.Global.Call("beforeEach", createFuncWithVisibleDone(fn))
 }
 
+func BeforeAllAsync(fn func(func())) {
+	js.Global.Call("beforeAll", createFuncWithVisibleDone(fn))
+}
+
 func AfterEach(fn func()) {
 	js.Global.Call("afterEach", fn)
 }
 
 func AfterEachAsync(fn func(func())) {
 	js.Global.Call("afterEach", createFuncWithVisibleDone(fn))
+}
+func AfterAllAsync(fn func(func())) {
+	js.Global.Call("afterAll", createFuncWithVisibleDone(fn))
 }
 
 func Expect(value interface{}) *Expectation {

@@ -1,5 +1,9 @@
 package jasmine
 
+import (
+	"time"
+)
+
 // +testing
 func caller(f func()) {
 	f()
@@ -103,6 +107,24 @@ func RunJasmineTests() {
 				Expect(b).ToBeTruthy()
 				done()
 			}()
+		})
+	})
+	Describe("testing async functions", func() {
+		SetDefaultTimeoutInterval(10)
+		BeforeEachAsync(func(done func()) {
+			time.AfterFunc(time.Millisecond*3, func() {
+				done()
+			})
+		})
+		ItAsync("ItAsync with BeforeEachAsync and AfterEachAsync", func(done func()) {
+			time.AfterFunc(time.Millisecond*3, func() {
+				done()
+			})
+		})
+		AfterEachAsync(func(done func()) {
+			time.AfterFunc(time.Millisecond*3, func() {
+				done()
+			})
 		})
 	})
 }
